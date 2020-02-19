@@ -1,0 +1,19 @@
+{
+  "name": "grabbin-coffee-api",
+  "version": "1.0.0",
+  "description": "An API that works with the Grabbin-Coffee mobile app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ggarnhart/Grabbin-Coffee-API.git"
+  },
+  "author": "Greg Garnhart, Reid Nagurka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ggarnhart/Grabbin-Coffee-API/issues"
+  },
+  "homepage": "https://github.com/ggarnhart/Grabbin-Coffee-API#readme"
+}
