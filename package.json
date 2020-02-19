@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ggarnhart/Grabbin-Coffee-API/issues"
   },
-  "homepage": "https://github.com/ggarnhart/Grabbin-Coffee-API#readme"
+  "homepage": "https://github.com/ggarnhart/Grabbin-Coffee-API#readme",
+  "dependencies": {
+    "@now/node": "^1.4.1",
+    "@sendgrid/mail": "^6.5.2"
+  }
 }

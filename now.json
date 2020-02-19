@@ -1,0 +1,5 @@
+{
+  "env": {
+    "SENDGRID_GRABBIN_COFFEE_KEY": "@sendgrid-grabbin-coffee-key"
+  }
+}
