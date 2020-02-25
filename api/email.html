@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Cardo|Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+    }
+    .email {
+      width: 90vw;
+
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .email-header {
+      margin-left: auto;
+      margin-right: auto;
+
+      /* max-height: 20vh; */
+      max-width: 490px;
+    }
+    .appointment {
+      border: solid black 3px;
+      padding-top: 10px;
+      padding-right: 10px;
+      padding-left: 10px;
+      padding-bottom: 20px;
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Cardo";
+    }
+    html,
+    span,
+    p,
+    a {
+      font-family: "Roboto";
+    }
+
+    .accept-button {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding: 6px 10px;
+      border: solid black 2px;
+      margin-left: auto;
+      margin-right: auto;
+      cursor: pointer;
+    }
+
+    .decline-button {
+      cursor: pointer;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+
+      background: black;
+      color: white;
+
+      font-size: 15px;
+    }
+
+    .appointment-header {
+      margin-top: 0px !important;
+      margin-bottom: 0px !important;
+    }
+
+    .center-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .appointment-row {
+      margin-top: 25px;
+    }
+
+    .appointment-date-time {
+      margin-top: 5px;
+      margin-bottom: 0px;
+    }
+
+    .salutation {
+      margin-bottom: 5px;
+    }
+    .signature {
+      margin-top: 0px;
+    }
+  </style>
+  <div class="email">
+    <div class="header">
+      <img
+        src="https://i.ibb.co/nfWzqpM/Grabbin-Coffee.png"
+        alt="Grabbin-Coffee-Header-Image"
+        class="email-header"
+      />
+    </div>
+    <div class="body">
+      <h1>Hi there, {name},</h1>
+      <p>
+        Your friend, {{sender name}}, has invited you to get coffee! Take a look
+        at the options below and select your favorite. Once selected, we'll
+        email you both a confirmation with a calendar invite attached. If you
+        can't make any of the appointments this time, click the "can't swing it"
+        button below.
+      </p>
+    </div>
+    <div class="appointment">
+      <h2 class="appointment-header">Coffee with Greg.</h2>
+      <p class="appointment-date-time">Date: {{Date}}, Time: {{Time}}</p>
+      <div class="appointment-row">
+        <a class="accept-button">Accept Invitation</a>
+      </div>
+    </div>
+    <p>Overbooked? Decline the invitation below:</p>
+    <div class="center-row">
+      <a class="decline-button">I Can't Swing It</a>
+    </div>
+
+    <p class="salutation">Cheers,</p>
+    <h2 class="signature">The Baristas</h2>
+    <div class="footer"></div>
+  </div>
+</html>
