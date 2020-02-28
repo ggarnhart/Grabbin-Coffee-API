@@ -168,27 +168,7 @@ module.exports = async (req, res) => {
     decline_link: "https://sadpuppy.games/"
   };
 
-  var invite = new Invite({
-    sender_email: invite_information.sender_email,
-    invitee_email: invite_information.email,
-
-    date_1_string: invite_information.date_1,
-    time_1_string: invite_information.date_2,
-
-    date_2_string: invite_information.date_2,
-    time_2_string: invite_information.time_2
-  });
-
   try {
-    // add check-in to check-in db
-    // await connectToDatabaseModule();
-    // console.log("connected to db");
-    // var result = await invite.save();
-
-    // invite_information.invite_id = result._id;
-    // console.log("save db");
-
-    // FOR NOW: NOT DOING FRONT END STUFF
     await sendInvite(invite_information);
     res.send();
   } catch (error) {
