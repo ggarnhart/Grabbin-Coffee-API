@@ -1,3 +1,7 @@
+// Monogo Stuff
+const connectToDatabaseModule = require("../db");
+const Invite = require("../models/Invite");
+
 // SENDGRID STUFF
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_GRABBIN_COFFEE_KEY);
@@ -8,6 +12,16 @@ sgMail.setApiKey(process.env.SENDGRID_GRABBIN_COFFEE_KEY);
 async function sendInvite(invite_information) {
   var msg = {};
   if (invite_information.count === 1) {
+    var invite_one = new Invite({
+      sender_email: invite_information.sender_email,
+      invitee_email: invite_information.invitee_email,
+      date_string: invite_information.date_1,
+      time_string: invite_information.time_1,
+      date: Date.now() // TODO change this to be correct
+    });
+
+    var result_one = invite_one.save();
+    var link_one = `mailto:${invite_information.sender_email}?subject=Responding%20to%20Your%20Invitation!&body=Hi%20there%2C%20%24%7B${invite_information.sender_name}%7D%2C%0D%0A%0D%0AI%20am%20pleased%20to%20accept%20your%20invitation%20to%20meet%20on%20%24%7B${invite_information.date_1}%7D%20at%20%24%7B${invite_information.time_1}%7D`;
     msg = {
       to: invite_information.email,
       from: "gegarnhart@email.wm.edu",
@@ -15,12 +29,13 @@ async function sendInvite(invite_information) {
       dynamic_template_data: {
         subject: invite_information.subject,
         sender_name: invite_information.sender_name,
+        sender_email: invite_information.sender_email,
         event_name: invite_information.event_name,
         name: invite_information.name,
         date_1: invite_information.date_1,
         time_1: invite_information.time_1,
-        event_link_1: invite_information.event_link_1,
-        decline_link: "https://sadpuppy.games/"
+        event_link_1: link_one,
+        decline_link: `https://grabbin-coffee-frontend.now.sh/decline/${invite_information.invite_id}`
       }
     };
   } else if (invite_information.count === 2) {
@@ -35,11 +50,11 @@ async function sendInvite(invite_information) {
         name: invite_information.name,
         date_1: invite_information.date_1,
         time_1: invite_information.time_1,
-        event_link_1: invite_information.event_link_1,
+        event_link_1: `https://grabbin-coffee-frontend.now.sh/attend/1/${invite_information.invite_id}`,
         date_2: invite_information.date_2,
         time_2: invite_information.time_2,
-        event_link_2: invite_information.event_link_2,
-        decline_link: "https://sadpuppy.games/"
+        event_link_1: `https://grabbin-coffee-frontend.now.sh/attend/2/${invite_information.invite_id}`,
+        decline_link: `https://grabbin-coffee-frontend.now.sh/decline/${invite_information.invite_id}`
       }
     };
   } else if (invite_information.count === 3) {
@@ -123,11 +138,15 @@ async function sendInvite(invite_information) {
 }
 
 module.exports = async (req, res) => {
+  console.log("MADE IT BABY");
+  console.log(req.body.email);
   var invite_information = {
+    invite_id: "",
     email: req.body.email,
-    count: 3,
+    sender_email: "greg.garnhart12@gmail.com",
+    count: 1,
 
-    subject: "Greg is inviting you to get Coffee",
+    subject: "Greg is inviting you to get Coffee from the Android App!",
     sender_name: "Greg",
     event_name: "Example Event",
     name: "Reid",
@@ -148,7 +167,28 @@ module.exports = async (req, res) => {
     event_link_5: "https://reddit.com",
     decline_link: "https://sadpuppy.games/"
   };
+
+  var invite = new Invite({
+    sender_email: invite_information.sender_email,
+    invitee_email: invite_information.email,
+
+    date_1_string: invite_information.date_1,
+    time_1_string: invite_information.date_2,
+
+    date_2_string: invite_information.date_2,
+    time_2_string: invite_information.time_2
+  });
+
   try {
+    // add check-in to check-in db
+    // await connectToDatabaseModule();
+    // console.log("connected to db");
+    // var result = await invite.save();
+
+    // invite_information.invite_id = result._id;
+    // console.log("save db");
+
+    // FOR NOW: NOT DOING FRONT END STUFF
     await sendInvite(invite_information);
     res.send();
   } catch (error) {

@@ -1,5 +1,6 @@
 {
   "env": {
-    "SENDGRID_GRABBIN_COFFEE_KEY": "@sendgrid-grabbin-coffee-key"
+    "SENDGRID_GRABBIN_COFFEE_KEY": "@sendgrid-grabbin-coffee-key",
+    "GRABBIN_COFFEE_MONGO": "@grabbin-coffee-mongo"
   }
 }
