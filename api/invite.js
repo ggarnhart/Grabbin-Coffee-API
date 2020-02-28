@@ -1,7 +1,3 @@
-// Monogo Stuff
-// const connectToDatabaseModule = require("../db");
-// const Invite = require("../models/Invite");
-
 // SENDGRID STUFF
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_GRABBIN_COFFEE_KEY);
