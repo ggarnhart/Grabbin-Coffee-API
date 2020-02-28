@@ -12,15 +12,6 @@ sgMail.setApiKey(process.env.SENDGRID_GRABBIN_COFFEE_KEY);
 async function sendInvite(invite_information) {
   var msg = {};
   if (invite_information.count === 1) {
-    // var invite_one = new Invite({
-    //   sender_email: invite_information.sender_email,
-    //   invitee_email: invite_information.invitee_email,
-    //   date_string: invite_information.date_1,
-    //   time_string: invite_information.time_1,
-    //   date: Date.now() // TODO change this to be correct
-    // });
-
-    var result_one = invite_one.save();
     var link_one = `mailto:${invite_information.sender_email}?subject=Responding%20to%20Your%20Invitation!&body=Hi%20there%2C%20%24%7B${invite_information.sender_name}%7D%2C%0D%0A%0D%0AI%20am%20pleased%20to%20accept%20your%20invitation%20to%20meet%20on%20%24%7B${invite_information.date_1}%7D%20at%20%24%7B${invite_information.time_1}%7D`;
     msg = {
       to: invite_information.email,
